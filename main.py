@@ -15,9 +15,12 @@ from flask import Flask, request, Response
 from flask_cors import CORS
 
 
+# TODO: config.py
+PORT = 9999
+
 HTTP_METHODS = ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH']
 # TODO: ...
-# HEADER_API_KEY = 'X-API-KEY'
+# HEADER_API_KEY = 'X-Api-Key'
 
 
 app = Flask(__name__)
@@ -53,4 +56,4 @@ def index(url_to: str):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=9999)
+    app.run(host='0.0.0.0', port=PORT)
