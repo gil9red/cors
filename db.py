@@ -135,9 +135,10 @@ if __name__ == '__main__':
     BaseModel.print_count_of_tables()
     print()
 
-    print(ApiKey.get_first().get_remained_requests_per_month())
+    if api_key := ApiKey.get_first():
+        print(api_key.get_remained_requests_per_month())
 
-    start_month = DT.datetime.now().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
-    query = ApiKey.get_first().requests.where(Request.created_date_time >= start_month)
-    for rq in query:
-        print(rq)
+        start_month = DT.datetime.now().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        query = api_key.requests.where(Request.created_date_time >= start_month)
+        for rq in query:
+            print(rq)
