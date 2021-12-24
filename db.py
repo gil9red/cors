@@ -88,7 +88,7 @@ class BaseModel(Model):
 
 class ApiKey(BaseModel):
     value = TextField(unique=True, index=True)
-    is_valid = BooleanField(default=True)
+    is_enabled = BooleanField(default=True)
     notes = TextField(null=True)
     created_date_time = DateTimeField(default=DT.datetime.now)
 

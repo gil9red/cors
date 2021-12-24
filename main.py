@@ -47,8 +47,8 @@ def index(url_to: str):
 
         rq_db.api_key = api_key
 
-        if not api_key.is_valid:
-            abort(401, description='API-KEY is not valid!')
+        if not api_key.is_enabled:
+            abort(401, description='API-KEY is not enabled!')
 
         rq_headers['Host'] = rq_db.url_domain
 
