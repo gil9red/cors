@@ -16,7 +16,7 @@ from werkzeug.exceptions import HTTPException
 # pip install flask-cors
 from flask_cors import CORS
 
-from config import HEADER_REMAINED_REQUESTS, HEADER_API_KEY, IGNORED_RESPONSE_HEADERS, PORT, HTTP_METHODS
+from config import DIR, HEADER_REMAINED_REQUESTS, HEADER_API_KEY, IGNORED_RESPONSE_HEADERS, PORT, HTTP_METHODS
 import db
 
 
@@ -86,5 +86,16 @@ def index(url_to: str):
         rq_db.save()
 
 
+def run(https=False):
+    ssl_context = None
+    if https:
+        ssl_context = (DIR / 'for_https/cert.pem', DIR / 'for_https/key.pem')
+
+    app.run(
+        host='0.0.0.0', port=PORT,
+        ssl_context=ssl_context,
+    )
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=PORT)
+    run(https=True)
