@@ -23,6 +23,6 @@ IGNORED_RESPONSE_HEADERS = [
     'Content-Length', 'Transfer-Encoding', 'Content-Encoding'
 ]
 
-PORT = 9999
+PORT = 10008
 HTTP_METHODS = ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH']
 MAXIMUM_REQUESTS_PER_MONTH = 10_000

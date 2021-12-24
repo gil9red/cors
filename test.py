@@ -40,29 +40,30 @@ if last := ApiKey.get_last():
 # requests_log.propagate = True
 
 
-url_to = 'http://127.0.0.1:10016'
-url = f'http://10.7.8.31:{PORT}/{url_to}'
-headers = {
-    HEADER_API_KEY: ApiKey.get_first().value,
-}
-
-while True:
-    print(url)
-    rs = requests.get(url, headers=headers)
-
-    remained_requests = int(rs.headers.get('X-Remained-Requests', 0))
-    print(rs, remained_requests, rs.content.strip()[:100])
-    print()
-
-    rs.raise_for_status()
-    # quit()
-
-
-quit()
+# url_to = 'http://127.0.0.1:10016'
+# url = f'http://10.7.8.31:{PORT}/{url_to}'
+# headers = {
+#     HEADER_API_KEY: ApiKey.get_first().value,
+# }
+#
+# while True:
+#     print(url)
+#     rs = requests.get(url, headers=headers)
+#
+#     remained_requests = int(rs.headers.get('X-Remained-Requests', 0))
+#     print(rs, remained_requests, rs.content.strip()[:100])
+#     print()
+#
+#     rs.raise_for_status()
+#     # quit()
+#
+#
+# quit()
 
 url_to = 'https://gist.github.com/gil9red/d56cc2085382d921789f73bd19e8f364'
 # url_to = 'https://ya.ru'
 url = f'http://localhost:{PORT}/' + url_to
+print(url)
 from urllib.parse import urlparse
 headers = {
     # TODO: без HEADER_API_KEY
@@ -74,9 +75,9 @@ headers = {
 # TODO: сделать тест и проверить, что результат cors и обычного запроса одинаковый
 # url = 'https://gist.github.com/gil9red/d56cc2085382d921789f73bd19e8f364'
 rs = requests.get(url, headers=headers)
-# print(rs)
+print(rs)
 print(rs.headers)
-# print(rs.text.strip()[:100])
+print(rs.text.strip()[:100])
 # print(rs.text.strip())
 
 # TODO: нужно еще статус код проверить
