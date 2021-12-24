@@ -11,7 +11,7 @@ import uuid
 from typing import Type, Optional, List
 
 # pip install peewee
-from peewee import Model, TextField, ForeignKeyField, CharField, DateTimeField, IntegerField
+from peewee import Model, TextField, ForeignKeyField, CharField, DateTimeField, IntegerField, BooleanField
 from playhouse.sqliteq import SqliteQueueDatabase
 
 from config import DB_FILE_NAME, MAXIMUM_REQUESTS_PER_MONTH
@@ -88,11 +88,16 @@ class BaseModel(Model):
 
 class ApiKey(BaseModel):
     value = TextField(unique=True, index=True)
+    is_valid = BooleanField(default=True)
+    notes = TextField(null=True)
     created_date_time = DateTimeField(default=DT.datetime.now)
 
     @classmethod
-    def add(cls) -> 'ApiKey':
-        return cls.create(value=str(uuid.uuid4()))
+    def add(cls, notes='') -> 'ApiKey':
+        return cls.create(
+            value=str(uuid.uuid4()),
+            notes=notes,
+        )
 
     @classmethod
     def get_by(cls, value: str) -> Optional['ApiKey']:

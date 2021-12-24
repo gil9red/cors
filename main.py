@@ -46,6 +46,10 @@ def index(url_to: str):
             abort(401, description='Unknown API-KEY!')
 
         rq_db.api_key = api_key
+
+        if not api_key.is_valid:
+            abort(401, description='API-KEY is not valid!')
+
         rq_headers['Host'] = rq_db.url_domain
 
         remained_requests = api_key.get_remained_requests_per_month()
