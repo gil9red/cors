@@ -41,7 +41,7 @@ def index(url_to: str):
             abort(400, description='API-KEY is missing!')
 
         api_key_value = rq_headers.pop(HEADER_API_KEY)
-        api_key = db.ApiKey.get(api_key_value)
+        api_key = db.ApiKey.get_by(api_key_value)
         if not api_key:
             abort(401, description='Unknown API-KEY!')
 
