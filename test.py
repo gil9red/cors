@@ -9,6 +9,8 @@ import unittest
 import requests
 
 # TODO: test with all HTTP_METHODS
+# TODO: https://pawamoy.github.io/posts/local-http-server-fake-files-testing-purposes/
+# TODO: Using https://docs.python.org/3/library/socketserver.html with server.shutdown()
 from config import PORT, HTTP_METHODS, HEADER_API_KEY
 
 from db import ApiKey
