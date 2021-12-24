@@ -30,6 +30,7 @@ def index(url_to: str):
 
     rq_db = db.Request()
     rq_db.client_ip = request.remote_addr
+    rq_db.client_http_method = request.method
     rq_db.url = url_to
     rq_db.url_domain = url_parsed.netloc
 

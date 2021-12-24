@@ -118,6 +118,7 @@ class ApiKey(BaseModel):
 class Request(BaseModel):
     api_key = ForeignKeyField(ApiKey, backref='requests', null=True)
     client_ip = TextField()
+    client_http_method = TextField()
     client_http_headers_json = TextField()
     url = TextField()
     url_domain = TextField(null=True)

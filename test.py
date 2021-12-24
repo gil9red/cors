@@ -80,6 +80,11 @@ print(rs.headers)
 print(rs.text.strip()[:100])
 # print(rs.text.strip())
 
+rs = requests.options(url, headers=headers)
+print(rs)
+print(rs.headers)
+print(rs.text.strip()[:100])
+
 # TODO: нужно еще статус код проверить
 # TODO: нужно еще проверить заголовки ответа минус заголовки HEADER_REMAINED_REQUESTS и IGNORED_RESPONSE_HEADERS
 
