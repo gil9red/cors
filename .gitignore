@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Current project
-make_requirements.bat
+database/
